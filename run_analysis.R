@@ -2,7 +2,7 @@
 library(data.table)
 
 #Merges the training and the test sets to create one data set
-##############################################################
+################################################################
 
 #Loading features
 features <- read.table("./UCI HAR Dataset/features.txt",sep="")
@@ -46,4 +46,4 @@ mean_and_standard$ActivityNumber <- names(activity_labels)[match(mean_and_standa
 ####################################################################################################################
 mean_and_standard.dt <-data.table(mean_and_standard)
 final_tidy_data <- mean_and_standard.dt[, lapply(.SD, mean), by=c("SubjectNumber","ActivityNumber")]
-write.csv(final_tidy_data, file="final_tidy_data.csv", row.names=FALSE)
+write.table(final_tidy_data, file="final_tidy_data.txt", row.name=FALSE)
